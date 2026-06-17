@@ -1,0 +1,49 @@
+1. Functional Requirements (المتطلبات الوظيفية)
+Data Ingestion & Cleaning: القدرة على استيراد بيانات العملاء من مصادر مختلفة (ملفات CSV/قواعد بيانات)، ومعالجة القيم المفقودة (Missing Values) والقيم الشاذة (Outliers).
+
+Feature Engineering: تحويل البيانات الخام إلى ميزات مفهومة للنموذج (مثل: حساب مدة اشتراك العميل، تحويل البيانات النصية إلى أرقام Encoding، وتوسيع نطاق الميزات Scaling).
+
+Churn Prediction Model: بناء وتدريب نموذج تعلم آلي (Machine Learning Model) لتصنيف العملاء إلى (مستمر المستمر / مغادر Churned) بدقة عالية.
+
+Model Evaluation: تقييم أداء النموذج باستخدام مقاييس تناسب البيانات غير المتوازنة (Imbalanced Data) مثل: F1-Score، Precision، Recall، و ROC-AUC.
+
+Model Explainability (Optional/Recommended): استخدام أدوات مثل SHAP أو LIME لتفسير أسباب توقع مغادرة العميل (لماذا صنف النموذج هذا العميل تحديداً أنه سيغادر؟).
+
+2. Non-Functional Requirements (المتطلبات غير الوظيفية)
+Accuracy & Reliability: يجب ألا تقل دقة الـ Recall (القدرة على اكتشاف العملاء الذين سيغادرون فعلاً) عن نسبة معينة (مثلاً 80%) لأن تفويت عميل سيغادر يكلف الشركة الكثير.
+
+Scalability: أن يكون الكود برمجياً منظماً وقابلاً للتطوير للتعامل مع مجموعات بيانات أضخم (Large Datasets) في المستقبل.
+
+Readability: كتابة كود نظيف (Clean Code) يتبع معايير PEP 8 مع إضافة تعليقات (Comments) واضحة وشرح لكل مرحلة.
+
+🛠️ Tech Stack & Prerequisites (المتطلبات التقنية)
+المكتبات والبيئات التي يجب أن تكون مثبتة لتشغيل المشروع:
+
+🐍 Language & Environment
+Python (Version >= 3.8)
+
+Jupyter Notebook أو Google Colab (للتجارب والتحليل الاستكشافي)
+
+📊 Data Science & Machine Learning Libraries
+numpy & pandas: لمعالجة وتحليل البيانات الجدوليّة.
+
+scikit-learn: لبناء نماذج التعلم الآلي، تقسيم البيانات، وتقييم الأداء.
+
+xgboost / lightgbm / catboost: (موصى بها بشدة) لأنها نماذج تعتمد على الأشجار (Tree-based) وهي الأقوى في التعامل مع بيانات العملاء الجدولية.
+
+matplotlib & seaborn: لرسم المخططات البيانية والتحليل الاستكشافي (EDA).
+
+imbalanced-learn (SMOTE): للتعامل مع مشكلة عدم توازن البيانات (لأن عدد العملاء المستمرين دائماً أكبر بكثير من المغادرين).
+
+💾 Dataset Requirements (متطلبات البيانات)
+لكي يعمل النموذج كفاءة، يفضل أن يحتوي ملف البيانات (Dataset) على الميزات (Features) التالية:
+
+Demographic Info: (عمر العميل، الجنس، الحالة الاجتماعية).
+
+Services Subscribed: (نوع باقة الإنترنت: ADSL/Fiber، خدمات إضافية كالحماية أو النسخ الاحتياطي، وجود خط أرضي).
+
+Account Info: (مدة الاشتراك Tenure، نوع العقد: شهري/سنوي، طريقة الدفع: إلكتروني/كاش، الفاتورة الشهرية Monthly Charges، إجمالي ما دفعه Total Charges).
+
+Usage Behavior: (حجم استهلاك البيانات، عدد الشكاوى المقدمة للدعم الفني Tech Support Tickets).
+
+Target Variable (الهدف): عمود Churn (يحتوي على Yes/No أو 1/0).
